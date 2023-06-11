@@ -32,21 +32,19 @@ bool isPrime(ulli a){
 	return true;
 }
 void input(){
-	/*do{
-		q = rand() %100 +1;
+	do{
+		q = rand() %100000 +1;
 	} while (!isPrime(q));
 	do{
-		p = rand() %100 +1;
-	} while (!isPrime(p));
-	*/
-	p = 17; q = 11;
+		p = rand() %100000 +1;
+	} while (!isPrime(p) || p==q);
+	
 	n = p*q;
 	phiN = (p-1)*(q-1);
-	/*do {
+	do {
 		e = rand() %(phiN-2)+2;
 	} while (gcd(e,phiN) != 1);
-	*/
-	e = 7;
+	
 	d = invMod(e,phiN);	
 }
 void nhapThongTin(){
@@ -60,11 +58,6 @@ ulli cypher(){
 ulli plain(){
     m = tinhMod(c,d,n);
     return m;
-}
-void menu(){
-	cout << "\n==============================================\n";
-	cout << " |   1. Sua thong tin can ma hoa               |\n";
-	cout << " |   2. Tao khoa                               |\n";
 }
 
 int main(){
