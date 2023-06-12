@@ -61,6 +61,7 @@ ulli plain(){
 }
 
 int main(){
+	srand(time(NULL));
 	input();
 	nhapThongTin();
 	cout << "Cypher: " << cypher();
