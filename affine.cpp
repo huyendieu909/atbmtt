@@ -21,13 +21,15 @@ int invMod(int a, int m){
 }
 void Input(){
     do {
-        cout << "Nhap a (0 -> 25, gcd(a,26)=1): ";
-        cin >> a;
+        // cout << "Nhap a (0 -> 25, gcd(a,26)=1): ";
+        // cin >> a;
+        a = rand() %25;
     } while (gcd(a,26) != 1 || a < 0 || a > 25);
     aInv = invMod(a,26);
     do{
-        cout << "Nhap b (0 -> 25): ";
-        cin >> b;
+        // cout << "Nhap b (0 -> 25): ";
+        // cin >> b;
+        b = rand() % 25;
     } while (b < 0 || b > 25);
     str = "";
     cout << "Nhap ki tu can thao tac: ";
@@ -91,6 +93,7 @@ void Initialize(){
 int main(){
     Initialize();
     int choice;
+    srand(time(NULL));
     do {
         menu();
         cout << "___Nhap lua chon: ";
