@@ -94,7 +94,10 @@ string encrypt(string pt, int n){
 	int row = (pt.length())/n; // number of rows in P
 	for(int i=0; i<row ; i++){
 		for(int j=0; j<n; j++){
-			P[i][j] = pt[ptIter++]-'a' ;
+			if (pt[ptIter] >= 'a' && pt[ptIter] <= 'z')
+				P[i][j] = pt[ptIter++]-'a' ; // phep tru nay muc dich de bien no thanh so tu 0 den 26
+			else if (pt[ptIter] >= 'A' && pt[ptIter] <= 'Z')
+				P[i][j] = pt[ptIter++]-'A' ;
 		}
 	}
 	// multiplyMatrices(mat_a , row_a , col_a , mat_b, row_b, col_b , mat_result)
@@ -102,7 +105,7 @@ string encrypt(string pt, int n){
 	string ct = "" ;
 	for(int i=0 ; i<row ; i++){
 		for(int j=0 ; j<n ;j++){
-			ct += (C[i][j] + 'a');
+			ct += (C[i][j] + 'A');
 		}
 	}
 	return ct ;
@@ -116,7 +119,10 @@ string decrypt(string ct, int n){
 	int row = ct.length()/n; // number of rows in C
 	for(int i=0; i<row ; i++){
 		for(int j=0; j<n; j++){
-			C[i][j] = ct[ctIter++]-'a' ;
+			if (ct[ctIter] >= 'a' && ct[ctIter] <= 'z')
+				C[i][j] = ct[ctIter++]-'a' ;
+			else if (ct[ctIter] >= 'A' && ct[ctIter] <= 'Z')
+				C[i][j] = ct[ctIter++]-'A' ;
 		}
 	}
 	int k_inverse[3][3] = {0};
@@ -127,7 +133,7 @@ string decrypt(string ct, int n){
 	string pt = "" ;
 	for(int i = 0 ; i<row ; i++){
 		for(int j=0 ; j<n ; j++){
-			pt += (P[i][j] + 'a');
+			pt += (P[i][j] + 'A');
 		}
 	}
 	return pt ;
